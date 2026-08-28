@@ -1,0 +1,37 @@
+Do Carandiru ao Palácio, página de vendas
+=========================================
+
+do-carandiru-ao-palacio.html
+    A página. Precisa da pasta assets/ do lado. É esta que vai pro servidor.
+
+pagina-arquivo-unico.html
+    A mesma página com as imagens embutidas no próprio arquivo. Não precisa
+    da pasta assets/, é só dar dois cliques. Boa pra mostrar pra alguém.
+    Não use essa no servidor, ela pesa 1,4 MB.
+
+assets/
+    livro-capa.jpg .... capa (provisória, troque pela oficial)
+    ricardo-brasil.jpg  camada atrás do player e poster
+    ricardo-cbf.jpg ... poster do player
+    bola-ouro.jpg ..... bola atrás da capa
+    camisa-10.jpg ..... sobra do deck, não está em uso na página
+
+trim-capa.py
+    Recorta as abas brancas da capa oficial e grava em assets/livro-capa.jpg.
+    Precisa do Pillow: pip install pillow
+    Uso: python3 trim-capa.py          (procura em ~/Downloads)
+         python3 trim-capa.py capa.jpg
+
+CLAUDE.md
+    Contexto do projeto. Uma sessão do Claude Code aberta nessa pasta lê
+    esse arquivo sozinha e já sabe a paleta, as regras de escrita e o que
+    falta fazer.
+
+README.md
+    Como visualizar e o que ainda precisa ser preenchido.
+
+Falta preencher, os pontos estão marcados com comentário no HTML:
+  - data-embed na div #vsl, com a URL do embed da VSL
+  - href do link data-cta="checkout", com a URL do checkout
+  - os cards do carrossel, para colar os prints das avaliações
+  - a capa oficial, via trim-capa.py

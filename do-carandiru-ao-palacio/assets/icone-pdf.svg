@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 128" role="img" aria-label="Arquivo em PDF">
+  <path d="M10 4h50l26 26v94H10z" fill="#141210" stroke="#ffc400" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M60 4v26h26" fill="none" stroke="#ffc400" stroke-width="3" stroke-linejoin="round"/>
+  <g fill="none" stroke="#ffc400" stroke-width="3" stroke-linecap="round" opacity=".45">
+    <path d="M24 48h34M24 62h48M24 76h48"/>
+  </g>
+  <rect x="18" y="90" width="60" height="24" rx="4" fill="#ffc400"/>
+  <text x="48" y="107" text-anchor="middle" font-family="Archivo, Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="1.4" fill="#141210">PDF</text>
+</svg>
