@@ -111,12 +111,22 @@ O livro é vendido em PDF, não impresso. Nada de "envio", "frete" ou "recebeu"
 em texto novo. A frase que o Thiago pediu é "compre e comece a ler agora
 mesmo", e a garantia fala em reembolso, não em devolução do exemplar.
 
+## Preço
+
+De R$ 79,90 por R$ 49,90. Os R$ 79,90 aparecem riscados com uma barra
+dourada em cima, ao lado da etiqueta "R$ 30 de desconto", que é a diferença
+exata entre os dois. Nada de percentual arredondado.
+
 ## Pendências
 
 - [x] Capa oficial no lugar da provisória, via `trim-capa.py`.
-- [ ] URL do embed da VSL em `data-embed` na div `#vsl`.
-- [ ] Link do checkout no `href` do `a[data-cta="checkout"]`.
-- [ ] Prints reais das avaliações da Amazon no carrossel.
+- [x] VSL. O vídeo é servido junto com a página, em `video/vsl-ricardo.mp4`,
+      apontado por `data-video` na div `#vsl`. O `data-embed` continua lá e
+      vazio: preenchido, ele passa a valer no lugar do arquivo.
+- [x] Checkout: `https://pay.kiwify.com.br/BAA9Xsp`, no `a[data-cta="checkout"]`.
+      Os botões do hero e da barra fixa continuam rolando para a oferta, de
+      propósito, para o visitante passar pelo preço e pela garantia.
+- [x] Carrossel de avaliações, removido a pedido do Thiago.
 - [ ] Foto do Ricardo com a camisa do Atlético-MG, que ele mandou no chat mas
       nunca chegou como arquivo.
 

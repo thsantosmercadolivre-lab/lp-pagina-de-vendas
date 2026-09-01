@@ -2,7 +2,12 @@ Do Carandiru ao Palácio, página de vendas
 =========================================
 
 do-carandiru-ao-palacio.html
-    A página. Precisa da pasta assets/ do lado. É esta que vai pro servidor.
+    A página. Precisa das pastas assets/ e video/ do lado. É esta que vai
+    pro servidor.
+
+video/vsl-ricardo.mp4
+    A VSL, 66 segundos. O original de 190 MB virou 8,7 MB em 720p. O player
+    só baixa o arquivo depois do clique.
 
 pagina-arquivo-unico.html
     A mesma página com as imagens embutidas no próprio arquivo. Não precisa
@@ -30,8 +35,5 @@ CLAUDE.md
 README.md
     Como visualizar e o que ainda precisa ser preenchido.
 
-Falta preencher, os pontos estão marcados com comentário no HTML:
-  - data-embed na div #vsl, com a URL do embed da VSL
-  - href do link data-cta="checkout", com a URL do checkout
-  - os cards do carrossel, para colar os prints das avaliações
-  - a capa oficial, via trim-capa.py
+Falta preencher:
+  - a foto de terno do Ricardo, hoje é uma de divulgação tirada de portal

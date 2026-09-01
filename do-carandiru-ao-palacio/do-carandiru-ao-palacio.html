@@ -142,7 +142,7 @@ main{position:relative;z-index:2}
   overflow:hidden;cursor:pointer;
   box-shadow:0 40px 90px -30px rgba(0,0,0,.95),0 0 0 1px rgba(255,196,0,.14),0 0 70px -20px rgba(255,196,0,.3);
 }
-.player iframe{width:100%;height:100%;border:0;display:block}
+.player iframe,.player video{width:100%;height:100%;border:0;display:block;background:#000;object-fit:cover}
 .player-poster{position:absolute;inset:0;background:#050505 center 12%/cover no-repeat}
 .player-poster::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.3),rgba(5,5,5,.72))}
 .play{
@@ -290,6 +290,20 @@ main{position:relative;z-index:2}
 @keyframes spin-border{to{--ang:360deg}}
 .card-top{padding:15px 26px;background:var(--gold);color:#0a0700;font-size:11px;font-weight:800;letter-spacing:2.6px;text-transform:uppercase;text-align:center}
 .card-body{padding:44px 42px}
+.price-de{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-bottom:14px}
+.price-de .risco{
+  position:relative;font-family:'Anton',sans-serif;font-size:30px;line-height:1;
+  letter-spacing:.5px;color:#6f6a5e;
+}
+/* risco em dourado por cima do preço antigo, para ele continuar legível */
+.price-de .risco::after{
+  content:"";position:absolute;left:-4%;right:-4%;top:52%;height:3px;
+  background:var(--gold);border-radius:3px;transform:rotate(-6deg);
+}
+.price-de .off{
+  font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:#3d2600;background:var(--gold);padding:7px 13px;border-radius:var(--r-pill);
+}
 .price{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap}
 .price .cur{font-size:22px;font-weight:800;color:var(--gold);align-self:flex-start;margin-top:9px}
 .price .now{font-family:'Anton',sans-serif;font-size:clamp(54px,9vw,80px);line-height:.9;color:var(--gold)}
@@ -330,6 +344,7 @@ footer.ft{margin-top:88px;padding:42px 0 120px;border-top:1px solid var(--line);
   box-shadow:0 18px 44px -16px rgba(0,0,0,.9);
 }
 .sticky .p{font-family:'Anton',sans-serif;font-size:24px;color:var(--gold);line-height:1}
+.sticky .de{font-size:15px;color:#6f6a5e;text-decoration:line-through;text-decoration-color:var(--gold);text-decoration-thickness:2px;margin-right:7px}
 .sticky .p small{display:block;font-family:'Archivo',sans-serif;font-size:9.5px;letter-spacing:1.8px;color:var(--ink-faint);font-weight:600;text-transform:uppercase}
 
 @media (max-width:900px){
@@ -392,11 +407,12 @@ footer.ft{margin-top:88px;padding:42px 0 120px;border-top:1px solid var(--line);
       </div>
 
       <!--
-        VSL: cole a URL do embed em data-embed (VTurb, Panda, YouTube, Vimeo).
-        Ex.: data-embed="https://www.youtube.com/embed/XXXX?autoplay=1&rel=0"
-        Enquanto estiver vazio, o player mostra o poster e o botão de play.
+        VSL: hoje o vídeo é um arquivo servido junto com a página, em
+        data-video. Para trocar por um player hospedado (VTurb, Panda,
+        YouTube, Vimeo), apague o data-video e ponha a URL do embed em
+        data-embed, o resto funciona igual.
       -->
-      <div class="player" id="vsl" data-embed="" role="button" tabindex="0" aria-label="Assistir ao vídeo do Ricardo">
+      <div class="player" id="vsl" data-video="video/vsl-ricardo.mp4" data-poster="assets/ricardo-cbf.jpg" data-embed="" role="button" tabindex="0" aria-label="Assistir ao vídeo do Ricardo">
         <div class="player-poster" style="background-image:url('assets/ricardo-cbf.jpg')"></div>
         <div class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         <div class="player-label">
@@ -408,7 +424,7 @@ footer.ft{margin-top:88px;padding:42px 0 120px;border-top:1px solid var(--line);
 
     <div class="hero-cta">
       <a class="btn btn-lg" href="#oferta">Quero ler esse livro <span class="arw">→</span></a>
-      <div class="btn-note">R$ 49,90 no livro em PDF, compre e comece a ler agora mesmo</div>
+      <div class="btn-note">De R$ 79,90 por R$ 49,90 no livro em PDF, compre e comece a ler agora mesmo</div>
     </div>
 
     <div class="hero-meta">
@@ -519,6 +535,10 @@ footer.ft{margin-top:88px;padding:42px 0 120px;border-top:1px solid var(--line);
       <div class="card-top">Do Carandiru ao Palácio · Edição em PDF</div>
       <div class="card-body">
 
+        <div class="price-de">
+          <span class="risco">R$ 79,90</span>
+          <span class="off">R$ 30 de desconto</span>
+        </div>
         <div class="price">
           <span class="cur">R$</span>
           <span class="now">49,90</span>
@@ -536,8 +556,7 @@ footer.ft{margin-top:88px;padding:42px 0 120px;border-top:1px solid var(--line);
         <p class="inc-foot">Livro em PDF com prefácio do Ronaldo Fenômeno e caderno de fotos, compre e comece a ler agora mesmo. Pix, boleto ou cartão.</p>
 
         <div class="card-cta">
-          <!-- Troque o href pelo link do checkout -->
-          <a class="btn btn-lg" href="#" data-cta="checkout">Comprar por R$ 49,90 <span class="arw">→</span></a>
+          <a class="btn btn-lg" href="https://pay.kiwify.com.br/BAA9Xsp" data-cta="checkout" target="_blank" rel="noopener">Comprar por R$ 49,90 <span class="arw">→</span></a>
           <div class="btn-note">Compra segura, seus dados ficam protegidos</div>
         </div>
 
@@ -572,7 +591,7 @@ footer.ft{margin-top:88px;padding:42px 0 120px;border-top:1px solid var(--line);
 </main>
 
 <div class="sticky">
-  <div class="p">R$ 49,90<small>Livro em PDF</small></div>
+  <div class="p"><span class="de">79,90</span>R$ 49,90<small>Livro em PDF</small></div>
   <a class="btn" href="#oferta">Quero o meu <span class="arw">→</span></a>
 </div>
 
@@ -583,14 +602,30 @@ footer.ft{margin-top:88px;padding:42px 0 120px;border-top:1px solid var(--line);
   /* ── player da VSL ── */
   var p = document.getElementById('vsl');
   function play(){
+    var arquivo = p.getAttribute('data-video');
     var src = p.getAttribute('data-embed');
-    if(!src){ console.warn('VSL: preencha data-embed no #vsl com a URL do vídeo.'); return; }
-    var f = document.createElement('iframe');
-    f.src = src;
-    f.title = 'Do Carandiru ao Palácio, vídeo de apresentação';
-    f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
-    f.setAttribute('allowfullscreen','');
-    p.innerHTML = ''; p.style.cursor = 'default'; p.appendChild(f);
+    var midia;
+    if(arquivo){
+      /* vídeo servido junto com a página: entra como <video> nativo, com
+         controles, e só baixa depois do clique por causa do preload none */
+      midia = document.createElement('video');
+      midia.src = arquivo;
+      midia.controls = true;
+      midia.autoplay = true;
+      midia.playsInline = true;
+      midia.setAttribute('playsinline','');
+      midia.setAttribute('poster', p.getAttribute('data-poster') || '');
+    } else if(src){
+      midia = document.createElement('iframe');
+      midia.src = src;
+      midia.title = 'Do Carandiru ao Palácio, vídeo de apresentação';
+      midia.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
+      midia.setAttribute('allowfullscreen','');
+    } else {
+      console.warn('VSL: preencha data-video ou data-embed no #vsl.');
+      return;
+    }
+    p.innerHTML = ''; p.style.cursor = 'default'; p.appendChild(midia);
   }
   p.addEventListener('click', play);
   p.addEventListener('keydown', function(e){
