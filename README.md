@@ -9,6 +9,17 @@ Páginas de vendas estáticas, um arquivo HTML por página, sem build.
 | `assets/` | Imagens usadas pela página do livro |
 | `trim-capa.py` | Recorta as abas brancas da capa e grava em `assets/livro-capa.jpg` |
 
+## Colocar o vídeo da VSL
+
+O player procura por `assets/vsl.mp4`. Basta colocar o arquivo lá:
+
+```bash
+mv ~/Downloads/SEU-VIDEO.mp4 assets/vsl.mp4
+```
+
+Se preferir hospedar num player externo (VTurb, Panda, YouTube, Vimeo),
+preencha `data-embed` na div `#vsl`, que ele passa na frente do arquivo.
+
 ## Ver a página
 
 Abra o arquivo `.html` direto no navegador. Se preferir servir:
@@ -40,9 +51,11 @@ O script remove as bordas brancas e grava em `assets/livro-capa.jpg`.
 
 Dentro de `do-carandiru-ao-palacio.html`, procure pelos comentários:
 
-- `data-embed` na div `#vsl`, com a URL do embed da VSL
-- `href` do link `data-cta="checkout"`, com a URL do checkout
+- o vídeo da VSL em `assets/vsl.mp4` (o player já aponta para lá)
 - os cards do carrossel de avaliações, para colar os prints da Amazon
+- a capa oficial, via `trim-capa.py`
+
+O checkout já está ligado no `https://pay.kiwify.com.br/BAA9Xsp`.
 
 ## Contexto para o Claude Code
 

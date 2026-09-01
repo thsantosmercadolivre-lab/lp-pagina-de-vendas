@@ -3,3 +3,8 @@ referencia/
 .DS_Store
 Thumbs.db
 *.log
+# vídeo da VSL: fica de fora do git porque arquivo de vídeo estoura o
+# limite de 100 MB do GitHub e incha o histórico. Suba ele direto no
+# servidor junto com a pasta assets. Para versionar mesmo assim, apague
+# esta linha e use Git LFS.
+assets/vsl.mp4

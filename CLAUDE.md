@@ -1,6 +1,6 @@
 # Do Carandiru ao Palácio — página de vendas
 
-Página de vendas com VSL do livro de Ricardo Oliveira, vendido a R$ 49,90.
+Página de vendas com VSL do livro de Ricardo Oliveira, de R$ 79,90 por R$ 49,90.
 Arquivo principal: `do-carandiru-ao-palacio.html`, uma página só, sem build,
 sem dependência. Abra direto no navegador para ver.
 
@@ -16,8 +16,13 @@ Três seções, e o pedido é manter em três:
    (linear no wrapper, radial na imagem) para não lavar o H1 nem o CTA.
 2. O livro: mockup 3D com lombada, bola dourada por trás como ilustração,
    bullets, ficha técnica, e o carrossel de avaliações.
-3. Oferta: card de preço com borda gradiente girando, 5 benefícios, garantia
-   de 7 dias, rodapé. Barra fixa de preço no mobile.
+3. Oferta: card de preço com borda gradiente girando, de R$ 79,90 riscado
+   por R$ 49,90 com selo de 37% OFF, 5 benefícios, garantia de 7 dias,
+   rodapé. Barra fixa de preço no mobile.
+
+Os três CTAs apontam para o checkout da Kiwify em
+`https://pay.kiwify.com.br/BAA9Xsp`. Para trocar, mude o `href` dos três
+`a[data-cta="checkout"]`.
 
 ## Identidade
 
@@ -73,8 +78,9 @@ ou `python3 trim-capa.py caminho/da/capa.jpg`.
 ## Pendências
 
 - [ ] Capa oficial no lugar da provisória, via `trim-capa.py`.
-- [ ] URL do embed da VSL em `data-embed` na div `#vsl`.
-- [ ] Link do checkout no `href` do `a[data-cta="checkout"]`.
+- [ ] Vídeo da VSL em `assets/vsl.mp4`. O player já aponta para lá em
+      `data-video`. Para usar player externo em vez de arquivo, preencha
+      `data-embed`, que tem prioridade.
 - [ ] Prints reais das avaliações da Amazon no carrossel.
 - [ ] Foto do Ricardo com a camisa do Atlético-MG, que ele mandou no chat mas
       nunca chegou como arquivo.

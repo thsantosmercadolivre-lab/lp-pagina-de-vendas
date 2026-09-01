@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Do Carandiru ao Palácio | Ricardo Oliveira</title>
-<meta name="description" content="Ricardo Oliveira saiu do Carandiru e foi jogar ao lado de Ronaldinho, Kaká e Ronaldo. Prefácio de Ronaldo Fenômeno. Livro por R$ 49,90.">
+<meta name="description" content="Ricardo Oliveira saiu do Carandiru e foi jogar ao lado de Ronaldinho, Kaká e Ronaldo. Prefácio de Ronaldo Fenômeno. De R$ 79,90 por R$ 49,90.">
 <meta name="theme-color" content="#050505">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23050505'/%3E%3Ctext x='16' y='23' font-family='Arial Black,Arial' font-size='19' font-weight='900' fill='%23ffc400' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
 <meta property="og:title" content="Do Carandiru ao Palácio | Ricardo Oliveira">
@@ -138,7 +138,7 @@ main{position:relative;z-index:2}
   overflow:hidden;cursor:pointer;
   box-shadow:0 40px 90px -30px rgba(0,0,0,.95),0 0 0 1px rgba(255,196,0,.14),0 0 70px -20px rgba(255,196,0,.3);
 }
-.player iframe{width:100%;height:100%;border:0;display:block}
+.player iframe,.player video{width:100%;height:100%;border:0;display:block;background:#000;object-fit:contain}
 .player-poster{position:absolute;inset:0;background:#050505 center 12%/cover no-repeat}
 .player-poster::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.3),rgba(5,5,5,.72))}
 .play{
@@ -166,6 +166,7 @@ main{position:relative;z-index:2}
   margin-top:48px;padding-top:36px;border-top:1px solid var(--line);position:relative;z-index:3;
 }
 .hero-meta div{font-size:11px;letter-spacing:2.2px;text-transform:uppercase;color:var(--ink-faint)}
+.risc{color:var(--ink-faint);text-decoration-color:#e0533f;text-decoration-thickness:2px;font-weight:400}
 .hero-meta b{display:block;font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.6px;color:var(--ink);margin-top:7px}
 
 /* ══════ 2 · O LIVRO + PROVA ══════ */
@@ -308,7 +309,18 @@ main{position:relative;z-index:2}
 @keyframes spin-border{to{--ang:360deg}}
 .card-top{padding:15px 26px;background:var(--gold);color:#0a0700;font-size:11px;font-weight:800;letter-spacing:2.6px;text-transform:uppercase;text-align:center}
 .card-body{padding:44px 42px}
-.price{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.price{display:grid;gap:12px}
+.price .was{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.price .was s{
+  font-size:26px;font-weight:700;color:var(--ink-faint);
+  text-decoration-color:#e0533f;text-decoration-thickness:3px;
+}
+.price .was em{
+  font-style:normal;background:#e0533f;color:#fff;
+  font-size:11.5px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  padding:7px 14px;border-radius:var(--r-pill);
+}
+.price .now-row{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap}
 .price .cur{font-size:22px;font-weight:800;color:var(--gold);align-self:flex-start;margin-top:9px}
 .price .now{font-family:'Anton',sans-serif;font-size:clamp(54px,9vw,80px);line-height:.9;color:var(--gold)}
 .price small{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);padding-bottom:12px}
@@ -345,6 +357,7 @@ footer.ft{margin-top:88px;padding:42px 0 120px;border-top:1px solid var(--line);
   box-shadow:0 18px 44px -16px rgba(0,0,0,.9);
 }
 .sticky .p{font-family:'Anton',sans-serif;font-size:24px;color:var(--gold);line-height:1}
+.sticky .p .risc{font-size:16px}
 .sticky .p small{display:block;font-family:'Archivo',sans-serif;font-size:9.5px;letter-spacing:1.8px;color:var(--ink-faint);font-weight:600;text-transform:uppercase}
 
 @media (max-width:900px){
@@ -407,11 +420,15 @@ footer.ft{margin-top:88px;padding:42px 0 120px;border-top:1px solid var(--line);
       </div>
 
       <!--
-        VSL: cole a URL do embed em data-embed (VTurb, Panda, YouTube, Vimeo).
-        Ex.: data-embed="https://www.youtube.com/embed/XXXX?autoplay=1&rel=0"
-        Enquanto estiver vazio, o player mostra o poster e o botão de play.
+        VSL, duas formas:
+
+        data-video  arquivo de vídeo, o padrão. Coloque o MP4 em
+                    assets/vsl.mp4 e não precisa mexer em nada aqui.
+        data-embed  URL de player externo (VTurb, Panda, YouTube, Vimeo).
+                    Se estiver preenchido, ele tem prioridade sobre o arquivo.
       -->
-      <div class="player" id="vsl" data-embed="" role="button" tabindex="0" aria-label="Assistir ao vídeo do Ricardo">
+      <div class="player" id="vsl" data-video="assets/vsl.mp4" data-embed=""
+           role="button" tabindex="0" aria-label="Assistir ao vídeo do Ricardo">
         <div class="player-poster" style="background-image:url('assets/ricardo-cbf.jpg')"></div>
         <div class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         <div class="player-label">
@@ -422,15 +439,15 @@ footer.ft{margin-top:88px;padding:42px 0 120px;border-top:1px solid var(--line);
     </div>
 
     <div class="hero-cta">
-      <a class="btn btn-lg" href="#oferta">Quero ler esse livro <span class="arw">→</span></a>
-      <div class="btn-note">R$ 49,90 no livro impresso, com envio para todo o Brasil</div>
+      <a class="btn btn-lg" href="https://pay.kiwify.com.br/BAA9Xsp" data-cta="checkout" target="_blank" rel="noopener">Quero ler esse livro <span class="arw">→</span></a>
+      <div class="btn-note">De <s class="risc">R$ 79,90</s> por <b style="color:var(--gold)">R$ 49,90</b>, com envio para todo o Brasil</div>
     </div>
 
     <div class="hero-meta">
       <div>Autor<b>Ricardo Oliveira</b></div>
       <div>Prefácio<b>Ronaldo Fenômeno</b></div>
       <div>Formato<b>Livro impresso</b></div>
-      <div>Preço<b>R$ 49,90</b></div>
+      <div>Preço<b><s class="risc">R$ 79,90</s> R$ 49,90</b></div>
     </div>
 
   </div>
@@ -570,13 +587,16 @@ footer.ft{margin-top:88px;padding:42px 0 120px;border-top:1px solid var(--line);
     <p class="lead" style="max-width:580px;margin:0 auto">Se você está no meio de alguma coisa difícil e de vez em quando bate aquela vontade de largar tudo, esse livro é para ler agora, não daqui a cinco anos.</p>
 
     <div class="card">
-      <div class="card-top">Do Carandiru ao Palácio · Edição impressa</div>
+      <div class="card-top">Oferta de lançamento · Edição impressa</div>
       <div class="card-body">
 
         <div class="price">
-          <span class="cur">R$</span>
-          <span class="now">49,90</span>
-          <small>à vista, ou parcelado no cartão</small>
+          <div class="was"><s>R$ 79,90</s><em>37% OFF</em></div>
+          <div class="now-row">
+            <span class="cur">R$</span>
+            <span class="now">49,90</span>
+            <small>à vista, ou parcelado no cartão</small>
+          </div>
         </div>
 
         <p class="inc-title">O que você ganha lendo</p>
@@ -590,8 +610,8 @@ footer.ft{margin-top:88px;padding:42px 0 120px;border-top:1px solid var(--line);
         <p class="inc-foot">Livro impresso com prefácio do Ronaldo Fenômeno e caderno de fotos, enviado para todo o Brasil. Pix, boleto ou cartão.</p>
 
         <div class="card-cta">
-          <!-- Troque o href pelo link do checkout -->
-          <a class="btn btn-lg" href="#" data-cta="checkout">Comprar por R$ 49,90 <span class="arw">→</span></a>
+          <!-- Checkout Kiwify. Para trocar, mude o href dos três a[data-cta="checkout"]. -->
+          <a class="btn btn-lg" href="https://pay.kiwify.com.br/BAA9Xsp" data-cta="checkout" target="_blank" rel="noopener">Comprar por R$ 49,90 <span class="arw">→</span></a>
           <div class="btn-note">Compra segura, seus dados ficam protegidos</div>
         </div>
 
@@ -623,8 +643,8 @@ footer.ft{margin-top:88px;padding:42px 0 120px;border-top:1px solid var(--line);
 </main>
 
 <div class="sticky">
-  <div class="p">R$ 49,90<small>Livro impresso</small></div>
-  <a class="btn" href="#oferta">Quero o meu <span class="arw">→</span></a>
+  <div class="p"><s class="risc">R$ 79,90</s> R$ 49,90<small>Livro impresso</small></div>
+  <a class="btn" href="https://pay.kiwify.com.br/BAA9Xsp" data-cta="checkout" target="_blank" rel="noopener">Quero o meu <span class="arw">→</span></a>
 </div>
 
 <script>
@@ -632,16 +652,40 @@ footer.ft{margin-top:88px;padding:42px 0 120px;border-top:1px solid var(--line);
   document.getElementById('yr').textContent = new Date().getFullYear();
 
   /* ── player da VSL ── */
-  var p = document.getElementById('vsl');
+  var p = document.getElementById('vsl'), guardado = p.innerHTML;
+
+  function restaurar(aviso){
+    console.warn(aviso);
+    p.innerHTML = guardado;
+    p.style.cursor = 'pointer';
+  }
   function play(){
-    var src = p.getAttribute('data-embed');
-    if(!src){ console.warn('VSL: preencha data-embed no #vsl com a URL do vídeo.'); return; }
-    var f = document.createElement('iframe');
-    f.src = src;
-    f.title = 'Do Carandiru ao Palácio, vídeo de apresentação';
-    f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
-    f.setAttribute('allowfullscreen','');
-    p.innerHTML = ''; p.style.cursor = 'default'; p.appendChild(f);
+    var embed = p.getAttribute('data-embed'),
+        video = p.getAttribute('data-video'),
+        el;
+    if(embed){
+      el = document.createElement('iframe');
+      el.src = embed;
+      el.title = 'Do Carandiru ao Palácio, vídeo de apresentação';
+      el.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
+      el.setAttribute('allowfullscreen','');
+    } else if(video){
+      el = document.createElement('video');
+      el.src = video;
+      el.controls = true;
+      el.autoplay = true;
+      el.playsInline = true;
+      el.setAttribute('playsinline','');
+      /* se o arquivo não estiver lá, volta o poster em vez de deixar tela preta */
+      el.addEventListener('error', function(){
+        restaurar('VSL: não consegui carregar ' + video + '. Confira se o arquivo existe.');
+      });
+    } else {
+      console.warn('VSL: preencha data-video com o caminho do MP4 ou data-embed com a URL do player.');
+      return;
+    }
+    p.innerHTML = ''; p.style.cursor = 'default'; p.appendChild(el);
+    if(el.tagName === 'VIDEO'){ el.play().catch(function(){}); }
   }
   p.addEventListener('click', play);
   p.addEventListener('keydown', function(e){
